@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/core/presentation/components/big_button.dart';
-import 'package:recipe_app/core/presentation/components/medium_button.dart';
-import 'package:recipe_app/core/presentation/components/small_button.dart';
+import 'package:recipe_app/core/presentation/components/buttons/big_button.dart';
+import 'package:recipe_app/core/presentation/components/buttons/filter_button.dart';
+import 'package:recipe_app/core/presentation/components/buttons/medium_button.dart';
+import 'package:recipe_app/core/presentation/components/buttons/rating_button.dart';
+import 'package:recipe_app/core/presentation/components/buttons/small_button.dart';
+import 'package:recipe_app/core/presentation/components/dialogs/rating_dialog.dart';
+import 'package:recipe_app/core/presentation/components/input_field/input_field.dart';
+import 'package:recipe_app/core/presentation/components/tabs/two_tab.dart';
 import 'package:recipe_app/ui/text_styles.dart';
 
 void main() {
@@ -38,6 +43,38 @@ class MyHomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          ElevatedButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return RatingDialog(
+                    title: 'Rate recipe',
+                    score: 3,
+                    onChange: (int score) {
+                      print(score);
+                    },
+                    actionName: 'send',
+                  );
+                },
+              );
+            },
+            child: const Text('RatingDialog'),
+          ),
+          TwoTab(
+            labels: [
+              'label1',
+              'label2',
+            ],
+            selectedIndex: 0,
+            onChange: (int index) {
+              print('TwoTab : $index');
+            },
+          ),
+          RatingButton('text'),
+          RatingButton('text', isSelected: true),
+          FilterButton('text'),
+          FilterButton('text', isSelected: true),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: BigButton(
@@ -63,6 +100,13 @@ class MyHomePage extends StatelessWidget {
               onPressed: () {
                 print('Small button');
               },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InputField(
+              label: 'Label',
+              placeHolder: 'placeHolder',
             ),
           ),
         ],

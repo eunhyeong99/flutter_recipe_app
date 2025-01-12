@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../ui/color_styles.dart';
-import '../../../ui/text_styles.dart';
+import '../../../../ui/color_styles.dart';
+import '../../../../ui/text_styles.dart';
 
 class SmallButton extends StatefulWidget {
   final String text;
