@@ -7,6 +7,14 @@ import 'package:recipe_app/core/presentation/components/buttons/small_button.dar
 import 'package:recipe_app/core/presentation/components/dialogs/rating_dialog.dart';
 import 'package:recipe_app/core/presentation/components/input_field/input_field.dart';
 import 'package:recipe_app/core/presentation/components/tabs/two_tab.dart';
+import 'package:recipe_app/core/routing/router.dart';
+import 'package:recipe_app/data/repository/mock_bookmark_repository_impl.dart';
+import 'package:recipe_app/data/repository/mock_recipe_repository_impl.dart';
+import 'package:recipe_app/domain/model/recipe.dart';
+import 'package:recipe_app/domain/repository/bookmark_repository.dart';
+import 'package:recipe_app/domain/use_case/get_saved_recipes_use_case.dart';
+import 'package:recipe_app/presentation/saved_recipes/saved_recipes_screen.dart';
+import 'package:recipe_app/presentation/sign_in/sign_in_screen.dart';
 import 'package:recipe_app/ui/text_styles.dart';
 
 void main() {
@@ -18,13 +26,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.light(),
+        scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
     );
   }
 }
